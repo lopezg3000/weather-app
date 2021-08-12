@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+    <script src="./weatherApp.js"></script>
+</head>
+
+<body style='background-color: #0F5474'>
+    <div class="container-fluid " style='position: relative;'>
+        <section>
+            <div class=' d-flex flex-row justify-content-center pt-4'>
+                <div class='d-flex flex-column'>
+                    <h1 class='mb-4' style='color: #e7e7e7de'>Hello Sunshine</h1>
+                    <div class='d-flex justify-content-center'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="currentColor"
+                            class="bi bi-emoji-sunglasses" viewBox="0 0 16 16" style='color: #e7e7e7b9'>
+                            <path
+                                d="M4.968 9.75a.5.5 0 1 0-.866.5A4.498 4.498 0 0 0 8 12.5a4.5 4.5 0 0 0 3.898-2.25.5.5 0 1 0-.866-.5A3.498 3.498 0 0 1 8 11.5a3.498 3.498 0 0 1-3.032-1.75zM7 5.116V5a1 1 0 0 0-1-1H3.28a1 1 0 0 0-.97 1.243l.311 1.242A2 2 0 0 0 4.561 8H5a2 2 0 0 0 1.994-1.839A2.99 2.99 0 0 1 8 6c.393 0 .74.064 1.006.161A2 2 0 0 0 11 8h.438a2 2 0 0 0 1.94-1.515l.311-1.242A1 1 0 0 0 12.72 4H10a1 1 0 0 0-1 1v.116A4.22 4.22 0 0 0 8 5c-.35 0-.69.04-1 .116z" />
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-1 0A7 7 0 1 0 1 8a7 7 0 0 0 14 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class='d-flex flex-row justify-content-center pt-5'>
+                <div class='d-flex flex-column p-3'
+                    style='width: 800px; background-color: #b0cf00e1; border-radius: 10px'>
+                    <h3>Find A Forecast</h3>
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="address" class="visually-hidden">Location</label>
+                            <input type="text" class="form-control" id="address"
+                                placeholder="Search for location or keyword">
+                        </div>
+
+                        <div class="col-4">
+                            <button class="btn btn-primary mb-3" style='background-color: #0F5474'
+                                onclick="getAddressData()">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id='content-container' class='content-container'>
+            <div id='loading-spinner-wrapper' class='loading-spinner-wrapper bg-white'>
+                <button class="btn btn-primary loading-spinner spinner" type="button">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+            </div>
+
+            <section id='current-forecast' class='d-flex row justify-content-center'
+                style='max-width: 800px; margin: 1rem auto; background-color: #b0cf00e1; border-radius: 10px;'>
+            </section>
+
+            <section id='weekly-forecast' class='d-flex row justify-content-center'
+                style='background-color: #b0cf00e1; max-width: 800px; margin: 0 auto; border-radius: 10px;'>
+            </section>
+
+            <section id='todays-detailed-forecast' class='d-flex row justify-content-center'
+                style='background-color: #b0cf00e1; max-width: 800px; margin: 1rem auto; border-radius: 10px;'>
+            </section>
+
+            <section id='modal-section'>
+                <!-- Modal -->
+                <div id='my-modal' class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title"></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div id='modal-body' class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+
+</html>
