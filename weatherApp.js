@@ -40,6 +40,19 @@ function httpRequest(url, callback) {
  
 */
 
+let addressInputField = document.getElementById('address');
+// console.log(addressInputField);
+
+addressInputField.addEventListener('keyup', function (e) {
+    e.preventDefault();
+    if (e.keyCode === 13) {
+        // console.log('enter key pressed');
+        document.getElementById('search-button').click()
+    }
+});
+
+
+
 let currentAddress = '';
 let currentForecastSection = '';
 let weeklyForecastSection = '';
