@@ -40,6 +40,8 @@ function httpRequest(url, callback) {
  
 */
 
+
+//function allows you to press enter and search results
 let addressInputField = document.getElementById('address');
 // console.log(addressInputField);
 
@@ -105,10 +107,12 @@ function getAddressData() {
 */
 
 let city = '';
+let state = '';
 
 function getWeatherData(addressData) {
     // console.log(addressData);
-    city = addressData.results[0].address_components.city; //BUG WHAT IF SOMEONE PUTS A STATE => UNDEFINED
+    city = addressData.results[0].address_components.city;
+    state = addressData.results[0].address_components.state;//Fixes BUG IF SOMEONE PUTS A STATE and no city=> UNDEFINED
     // console.log(city);
 
     let obj = addressData.results.find(obj => obj.location);
@@ -336,7 +340,7 @@ function displayForecastHourly(forecastHourlyData) {
     let cardTitle = document.createElement('h4');
     let cardTitleClassesToAdd = ['card-title'];
     cardTitle.classList.add(...cardTitleClassesToAdd);
-    cardTitle.innerHTML = city;
+    cardTitle.innerHTML = city ? city : state;
     cardBodyDiv.appendChild(cardTitle);
 
     //creates card text tag and styles using bootstrap classes
